@@ -8,13 +8,7 @@ const app = express()
 app.use(express.json());
 app.use(cors())
 
-
-
-// app.use('/auth', AuthRouter(app));
-
 const server = AccountRouter(app);
-
-
 
 server.use('*', (req: Request, res: Response, next: NextFunction) => {
     return res.status(404).end();
