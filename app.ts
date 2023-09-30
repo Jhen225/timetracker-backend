@@ -1,13 +1,23 @@
 import express, { NextFunction, Response, Request } from 'express';
 import cors from 'cors';
+import AccountRouter from './routers/AccountRouter';
 const PORT = process.env.PORT || 3000;
 const app = express()
+
 
 app.use(express.json());
 app.use(cors())
 
-app.use('*', (req: Request, res: Response, next: NextFunction) => {
+
+
+// app.use('/auth', AuthRouter(app));
+
+const server = AccountRouter(app);
+
+
+
+server.use('*', (req: Request, res: Response, next: NextFunction) => {
     return res.status(404).end();
 })
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
+server.listen(PORT, () => console.log(`Server started on port ${PORT}`))
