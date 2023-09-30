@@ -12,7 +12,7 @@ if (fs_logger.existsSync(`${logRootPath}/error.log`)) {
 
 const appendArr = ["service", "errors"];
 
-if (process.env.NODE_ENV == 'production') { 
+if (process.env.NODE_ENV !== 'production') { 
   appendArr.push("out");
 }
 

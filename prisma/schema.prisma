@@ -13,7 +13,8 @@ datasource db {
 
 model Account {
   id Int @id @default(autoincrement())
-  email String @db.VarChar(256)
+  account_id String @db.Uuid @unique @default(uuid())
+  email String @db.VarChar(256) @unique
   password String @db.VarChar(500)
   last_login DateTime @db.Timestamptz() @default(now())
   created_at DateTime @db.Timestamptz() @default(now())
